@@ -65,3 +65,17 @@ LOCAL_MODULE := libext2_uuid_host
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_HOST_SHARED_LIBRARY)
+
+# MStar Android Patch Begin
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := $(libext2_uuid_src_files)
+LOCAL_C_INCLUDES := $(libext2_uuid_c_includes)
+LOCAL_CFLAGS := $(libext2_uuid_cflags)
+LOCAL_WHOLE_STATIC_LIBRARIES := libc
+LOCAL_MODULE := libext2_uuid
+LOCAL_MODULE_TAGS := optional
+LOCAL_PRELINK_MODULE := false
+
+include $(BUILD_STATIC_LIBRARY)
+# MStar Android Patch End
